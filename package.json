@@ -1,0 +1,11 @@
+{
+  "name": "notary-stats-GUI",
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "nuxt"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.9.5",
+    "nuxt": "^2.12.0"
+  }
+}
