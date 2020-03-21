@@ -54,6 +54,8 @@ export default {
   },
   created() {
     this.$vuetify.theme.dark = true;
+  },
+  mounted() {
     this.pollData();
   },
   async asyncData({ $axios }) {
