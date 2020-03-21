@@ -54,6 +54,7 @@ export default {
   },
   created() {
     this.$vuetify.theme.dark = true;
+    this.pollData();
   },
   async asyncData({ $axios }) {
     let notaries = await $axios.$get(
@@ -68,6 +69,27 @@ export default {
       return notary;
     });
     return { notaries: notaries };
+  },
+  methods: {
+    pollData: async function() {
+      while (true) {
+        let notaries = await this.$axios.$get(
+          "https://kmd-data.s3.us-east-2.amazonaws.com/notary-stats-2020/main.json"
+        );
+        this.notaries = notaries.map(notary => {
+          notary["total"] =
+            notary.RICK.totalNotas +
+            notary.MORTY.totalNotas +
+            notary.TXSCLAPOW.totalNotas;
+          notary["name"] = `${notary["name"]} (${notary["address"]})`;
+          return notary;
+        });
+        this.delay(30000);
+      }
+    },
+    delay: async function(ms) {
+      return await new Promise(resolve => setTimeout(resolve, ms));
+    }
   }
 };
 </script>
