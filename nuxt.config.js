@@ -3,5 +3,6 @@ module.exports = {
         '@nuxtjs/axios',
     ],
     buildModules: ['@nuxtjs/vuetify'],
-    mode: "spa"
+    mode: "spa",
+    base: "/notary-testnet-stats-2020/"
 }
