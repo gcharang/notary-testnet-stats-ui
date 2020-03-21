@@ -73,6 +73,7 @@ export default {
   methods: {
     pollData: async function() {
       while (true) {
+        //console.log("inside poll data");
         let notaries = await this.$axios.$get(
           "https://kmd-data.s3.us-east-2.amazonaws.com/notary-stats-2020/main.json"
         );
@@ -84,7 +85,7 @@ export default {
           notary["name"] = `${notary["name"]} (${notary["address"]})`;
           return notary;
         });
-        this.delay(30000);
+        await this.delay(30000);
       }
     },
     delay: async function(ms) {
