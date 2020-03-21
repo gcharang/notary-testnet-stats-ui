@@ -71,5 +71,5 @@ export default {
   }
 };
 </script>
-//<li v-for="notary in notaries" class="item">{{ notary.name }}</li>
+
 

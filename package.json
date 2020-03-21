@@ -2,7 +2,8 @@
   "name": "notary-stats-GUI",
   "version": "0.1.0",
   "scripts": {
-    "dev": "nuxt"
+    "dev": "nuxt",
+    "generate": "nuxt generate"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.9.5",
