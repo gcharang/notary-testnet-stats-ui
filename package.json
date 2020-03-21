@@ -7,14 +7,12 @@
     "generate": "nuxt generate",
     "generate:gh-pages": "DEPLOY_ENV=GH_PAGES nuxt generate --fail-on-page-error",
     "build:gh-pages": "DEPLOY_ENV=GH_PAGES nuxt build --fail-on-page-error"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.9.5",
+    "nuxt": "^2.12.0"
+  },
+  "devDependencies": {
+    "@nuxtjs/vuetify": "^1.11.0"
   }
-}
-},
-"dependencies": {
-"@nuxtjs/axios": "^5.9.5",
-"nuxt": "^2.12.0"
-},
-"devDependencies": {
-"@nuxtjs/vuetify": "^1.11.0"
-}
 }
