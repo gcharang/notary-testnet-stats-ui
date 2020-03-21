@@ -54,9 +54,7 @@ export default {
   },
   created() {
     this.$vuetify.theme.dark = true;
-  },
-  mounted() {
-    // this.pollData();
+    this.pollData();
   },
   async asyncData({ $axios }) {
     let notaries = await $axios.$get(
