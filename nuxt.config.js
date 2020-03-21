@@ -2,5 +2,6 @@ module.exports = {
     modules: [
         '@nuxtjs/axios',
     ],
-    buildModules: ['@nuxtjs/vuetify']
+    buildModules: ['@nuxtjs/vuetify'],
+    mode: "spa"
 }
