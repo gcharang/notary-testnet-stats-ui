@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "scripts": {
     "dev": "nuxt",
-    "build": "nuxt build",
+    "build": "nuxt build --spa",
     "generate": "nuxt generate"
   },
   "dependencies": {
