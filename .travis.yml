@@ -3,7 +3,7 @@ node_js: node
 install:
   - npm install
 script:
-  - npm run build -- --spa
+  - npm run build:gh-pages -- --spa
 deploy:
   provider: pages
   skip-cleanup: true
