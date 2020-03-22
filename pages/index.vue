@@ -80,7 +80,9 @@ export default {
     }
   },
   watch: {
-    notaries: function(newValue) {}
+    notaries: function(newValue) {
+      this.$store.commit("setNotaryData", newValue);
+    }
   }
 };
 </script>
