@@ -10,7 +10,17 @@
       multi-sort
       item-key="name"
       class="elevation-1"
-    ></v-data-table>
+    >
+      <template v-slot:item.ricktime="{ item }">
+        <a target="_blank" :href="item.ricklink">{{item.ricktime}}</a>
+      </template>
+      <template v-slot:item.mortytime="{ item }">
+        <a target="_blank" :href="item.mortylink">{{item.mortytime}}</a>
+      </template>
+      <template v-slot:item.txsclapowtime="{ item }">
+        <a target="_blank" :href="item.txsclapowlink">{{item.txsclapowtime}}</a>
+      </template>
+    </v-data-table>
   </v-card>
 </template>
 
@@ -32,11 +42,11 @@ export default {
         // { text: "Address", sortable: false, value: "address" },
         { text: "Total", value: "total" },
         { text: "RICK.total", value: "RICK.pastCounts.last24" },
-        { text: "RICK.lastnota", value: "RICK.timeSinceLastNota" },
+        { text: "RICK.lastnota", value: "ricktime" },
         { text: "MORTY.total", value: "MORTY.pastCounts.last24" },
-        { text: "MORTY.lastNota", value: "MORTY.timeSinceLastNota" },
+        { text: "MORTY.lastNota", value: "mortytime" },
         { text: "TXSCLAPOW.total", value: "TXSCLAPOW.pastCounts.last24" },
-        { text: "TXSCLAPOW.lastNota", value: "TXSCLAPOW.timeSinceLastNota" }
+        { text: "TXSCLAPOW.lastNota", value: "txsclapowtime" }
       ]
     };
   },
@@ -54,6 +64,18 @@ export default {
         notary.MORTY.pastCounts.last24 +
         notary.TXSCLAPOW.pastCounts.last24;
       notary["name"] = `${notary["name"]} (${notary["address"]})`;
+      notary["ricktime"] = notary.RICK.timeSinceLastNota;
+      notary[
+        "ricklink"
+      ] = `https://rick.kmd.dev/tx/${notary.RICK.lastNotaTxnId}`;
+      notary["mortytime"] = notary.MORTY.timeSinceLastNota;
+      notary[
+        "mortylink"
+      ] = `https://morty.kmd.dev/tx/${notary.MORTY.lastNotaTxnId}`;
+      notary["txsclapowtime"] = notary.TXSCLAPOW.timeSinceLastNota;
+      notary[
+        "txsclapowlink"
+      ] = `http://159.69.10.44:54838/tx/${notary.TXSCLAPOW.lastNotaTxnId}`;
       return notary;
     });
     return { notaries: notaries };
@@ -71,6 +93,18 @@ export default {
             notary.MORTY.pastCounts.last24 +
             notary.TXSCLAPOW.pastCounts.last24;
           notary["name"] = `${notary["name"]} (${notary["address"]})`;
+          notary["ricktime"] = notary.RICK.timeSinceLastNota;
+          notary[
+            "ricklink"
+          ] = `https://rick.kmd.dev/tx/${notary.RICK.lastNotaTxnId}`;
+          notary["mortytime"] = notary.MORTY.timeSinceLastNota;
+          notary[
+            "mortylink"
+          ] = `https://morty.kmd.dev/tx/${notary.MORTY.lastNotaTxnId}`;
+          notary["txsclapowtime"] = notary.TXSCLAPOW.timeSinceLastNota;
+          notary[
+            "txsclapowlink"
+          ] = `http://159.69.10.44:54838/tx/${notary.TXSCLAPOW.lastNotaTxnId}`;
           return notary;
         });
         await this.delay(30000);
