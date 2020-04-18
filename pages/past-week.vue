@@ -6,6 +6,7 @@
       :headers="headers"
       :items="notaries"
       :sort-by="['total']"
+      :items-per-page="50"
       :sort-desc="[true]"
       multi-sort
       item-key="name"
