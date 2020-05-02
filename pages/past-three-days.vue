@@ -28,9 +28,6 @@
 
 <script>
 export default {
-  props: {
-    source: String,
-  },
   async asyncData({ $axios }) {
     let notaries = await $axios.$get(
       "https://kmd-data.s3.us-east-2.amazonaws.com/notary-stats-2020/main.json"
