@@ -102,7 +102,7 @@ export default {
       }
     },
     async delay(ms) {
-      return await new Promise((resolve) => setTimeout(resolve, ms));
+      return new Promise((resolve) => setTimeout(resolve, ms));
     },
   },
 };
