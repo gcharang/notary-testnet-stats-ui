@@ -2,7 +2,12 @@
   <v-app id="inspire">
     <v-navigation-drawer v-model="drawer" app clipped expand-on-hover>
       <v-list>
-        <v-list-item v-for="item in navDrawerItems" :key="item.title" :to="item.nuxtLink" nuxt>
+        <v-list-item
+          v-for="item in navDrawerItems"
+          :key="item.title"
+          :to="item.nuxtLink"
+          nuxt
+        >
           <v-list-item-icon>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-icon>
@@ -37,7 +42,7 @@
 <script>
 export default {
   props: {
-    source: String
+    source: String,
   },
   data() {
     return {
@@ -47,21 +52,19 @@ export default {
         {
           title: "Past Three Days",
           icon: "mdi-numeric-3-box",
-          nuxtLink: "/past-three-days"
+          nuxtLink: "/past-three-days",
         },
         {
           title: "Past Week",
           icon: "mdi-numeric-7-box",
-          nuxtLink: "/past-week"
-        }
+          nuxtLink: "/past-week",
+        },
       ],
-      drawer: true
+      drawer: true,
     };
   },
   created() {
     this.$vuetify.theme.dark = true;
-  }
+  },
 };
 </script>
-
-
