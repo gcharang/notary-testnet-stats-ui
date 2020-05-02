@@ -26,7 +26,10 @@
     </v-content>
 
     <v-footer app>
-      <span>&copy; {{ new Date().getFullYear() }}</span>
+      <span>
+        <v-icon>mdi-copyright</v-icon>
+        {{ new Date().getFullYear() }} gcharang
+      </span>
     </v-footer>
   </v-app>
 </template>
