@@ -1,4 +1,3 @@
-
 <template>
   <v-card>
     <v-card-title>Last 72 Hours</v-card-title>
@@ -13,13 +12,15 @@
       class="elevation-1"
     >
       <template v-slot:item.ricktime="{ item }">
-        <a target="_blank" :href="item.ricklink">{{item.ricktime}}</a>
+        <a target="_blank" :href="item.ricklink">{{ item.ricktime }}</a>
       </template>
       <template v-slot:item.mortytime="{ item }">
-        <a target="_blank" :href="item.mortylink">{{item.mortytime}}</a>
+        <a target="_blank" :href="item.mortylink">{{ item.mortytime }}</a>
       </template>
       <template v-slot:item.txsclapowtime="{ item }">
-        <a target="_blank" :href="item.txsclapowlink">{{item.txsclapowtime}}</a>
+        <a target="_blank" :href="item.txsclapowlink">{{
+          item.txsclapowtime
+        }}</a>
       </template>
     </v-data-table>
   </v-card>
@@ -28,7 +29,7 @@
 <script>
 export default {
   props: {
-    source: String
+    source: String,
   },
   data() {
     return {
@@ -38,7 +39,7 @@ export default {
           text: "Name",
           align: "start",
           sortable: false,
-          value: "name"
+          value: "name",
         },
         // { text: "Address", sortable: false, value: "address" },
         { text: "Total", value: "total" },
@@ -47,8 +48,8 @@ export default {
         { text: "MORTY.total", value: "MORTY.pastCounts.last72" },
         { text: "MORTY.lastNota", value: "mortytime" },
         { text: "TXSCLAPOW.total", value: "TXSCLAPOW.pastCounts.last72" },
-        { text: "TXSCLAPOW.lastNota", value: "txsclapowtime" }
-      ]
+        { text: "TXSCLAPOW.lastNota", value: "txsclapowtime" },
+      ],
     };
   },
   created() {
@@ -59,7 +60,7 @@ export default {
     let notaries = await $axios.$get(
       "https://kmd-data.s3.us-east-2.amazonaws.com/notary-stats-2020/main.json"
     );
-    notaries = notaries.map(notary => {
+    notaries = notaries.map((notary) => {
       notary["total"] =
         notary.RICK.pastCounts.last72 +
         notary.MORTY.pastCounts.last72 +
@@ -88,7 +89,7 @@ export default {
         let notaries = await this.$axios.$get(
           "https://kmd-data.s3.us-east-2.amazonaws.com/notary-stats-2020/main.json"
         );
-        this.notaries = notaries.map(notary => {
+        this.notaries = notaries.map((notary) => {
           notary["total"] =
             notary.RICK.pastCounts.last72 +
             notary.MORTY.pastCounts.last72 +
@@ -112,13 +113,13 @@ export default {
       }
     },
     delay: async function(ms) {
-      return await new Promise(resolve => setTimeout(resolve, ms));
-    }
+      return await new Promise((resolve) => setTimeout(resolve, ms));
+    },
   },
   watch: {
     notaries: function(newValue) {
       this.$store.commit("setNotaryData", newValue);
-    }
-  }
+    },
+  },
 };
 </script>
