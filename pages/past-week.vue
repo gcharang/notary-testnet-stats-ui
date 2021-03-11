@@ -30,7 +30,7 @@
 export default {
   async asyncData({ $axios }) {
     let notaries = await $axios.$get(
-      "https://kmd-data.s3.us-east-2.amazonaws.com/notary-stats-2020/main.json"
+      "https://kmd-data.s3.us-east-2.amazonaws.com/notary-stats-2021/main.json"
     );
     notaries = notaries.map((notary) => {
       notary.total =
@@ -83,7 +83,7 @@ export default {
       while (true) {
         // console.log("inside poll data");
         const notaries = await this.$axios.$get(
-          "https://kmd-data.s3.us-east-2.amazonaws.com/notary-stats-2020/main.json"
+          "https://kmd-data.s3.us-east-2.amazonaws.com/notary-stats-2021/main.json"
         );
         this.notaries = notaries.map((notary) => {
           notary.total =
