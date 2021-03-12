@@ -1,17 +1,14 @@
 // only add `router.base = '/<repository-name>/'` if `DEPLOY_ENV` is `GH_PAGES`
-const routerBase = process.env.DEPLOY_ENV === 'GH_PAGES' ? {
-    router: {
-        base: '/notary-testnet-stats-2021/'
-    }
-} : {}
-
+// const routerBase = process.env.DEPLOY_ENV === 'GH_PAGES' ? {
+//     router: {
+//         base: '/notary-testnet-stats-2021/'
+//     }
+// } : {}
 
 module.exports = {
-    modules: [
-        '@nuxtjs/axios',
-    ],
-    buildModules: ['@nuxtjs/vuetify'],
-    mode: "spa",
-    ...routerBase
-
-}
+  modules: ["@nuxtjs/axios"],
+  buildModules: ["@nuxtjs/vuetify"],
+  ssr: "false",
+  target: "static",
+  //  ...routerBase
+};
