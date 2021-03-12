@@ -76,16 +76,12 @@ export default {
         );
         this.notaries = notaries.map((notary) => {
           notary.total =
-            notary.RICK.pastCounts.last168 +
-            notary.MORTY.pastCounts.last168 +
-            notary.TXSCLAPOW.pastCounts.last168;
+            notary.RICK.pastCounts.last168 + notary.MORTY.pastCounts.last168;
           notary.name = `${notary.name} (${notary.address})`;
           notary.ricktime = notary.RICK.timeSinceLastNota;
           notary.ricklink = `https://rick.kmd.dev/tx/${notary.RICK.lastNotaTxnId}`;
           notary.mortytime = notary.MORTY.timeSinceLastNota;
           notary.mortylink = `https://morty.kmd.dev/tx/${notary.MORTY.lastNotaTxnId}`;
-          notary.txsclapowtime = notary.TXSCLAPOW.timeSinceLastNota;
-          notary.txsclapowlink = `http://159.69.10.44:54838/tx/${notary.TXSCLAPOW.lastNotaTxnId}`;
           return notary;
         });
         await this.delay(30000);
