@@ -33,7 +33,7 @@
     <v-footer app>
       <span>
         <v-icon>mdi-copyright</v-icon>
-        {{ new Date().getFullYear() }} gcharang
+        {{ new Date().getFullYear() }} gcharang &amp; Komodo Platform
       </span>
     </v-footer>
   </v-app>
