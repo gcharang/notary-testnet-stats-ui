@@ -17,11 +17,6 @@
       <template v-slot:item.mortytime="{ item }">
         <a target="_blank" :href="item.mortylink">{{ item.mortytime }}</a>
       </template>
-      <template v-slot:item.txsclapowtime="{ item }">
-        <a target="_blank" :href="item.txsclapowlink">{{
-          item.txsclapowtime
-        }}</a>
-      </template>
     </v-data-table>
   </v-card>
 </template>
@@ -34,16 +29,12 @@ export default {
     );
     notaries = notaries.map((notary) => {
       notary.total =
-        notary.RICK.pastCounts.last168 +
-        notary.MORTY.pastCounts.last168 +
-        notary.TXSCLAPOW.pastCounts.last168;
+        notary.RICK.pastCounts.last168 + notary.MORTY.pastCounts.last168;
       notary.name = `${notary.name} (${notary.address})`;
       notary.ricktime = notary.RICK.timeSinceLastNota;
       notary.ricklink = `https://rick.kmd.dev/tx/${notary.RICK.lastNotaTxnId}`;
       notary.mortytime = notary.MORTY.timeSinceLastNota;
       notary.mortylink = `https://morty.kmd.dev/tx/${notary.MORTY.lastNotaTxnId}`;
-      notary.txsclapowtime = notary.TXSCLAPOW.timeSinceLastNota;
-      notary.txsclapowlink = `http://159.69.10.44:54838/tx/${notary.TXSCLAPOW.lastNotaTxnId}`;
       return notary;
     });
     return { notaries };
@@ -64,8 +55,6 @@ export default {
         { text: "RICK.lastnota", value: "ricktime" },
         { text: "MORTY.total", value: "MORTY.pastCounts.last168" },
         { text: "MORTY.lastNota", value: "mortytime" },
-        { text: "TXSCLAPOW.total", value: "TXSCLAPOW.pastCounts.last168" },
-        { text: "TXSCLAPOW.lastNota", value: "txsclapowtime" },
       ],
     };
   },

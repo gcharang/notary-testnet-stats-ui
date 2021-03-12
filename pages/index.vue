@@ -17,11 +17,6 @@
       <template v-slot:item.mortytime="{ item }">
         <a target="_blank" :href="item.mortylink">{{ item.mortytime }}</a>
       </template>
-      <template v-slot:item.txsclapowtime="{ item }">
-        <a target="_blank" :href="item.txsclapowlink">{{
-          item.txsclapowtime
-        }}</a>
-      </template>
     </v-data-table>
   </v-card>
 </template>
@@ -36,17 +31,12 @@ export default {
       "https://kmd-data.s3.us-east-2.amazonaws.com/notary-stats-2021/main.json"
     );
     notaries = notaries.map((notary) => {
-      notary.total =
-        notary.RICK.totalNotas +
-        notary.MORTY.totalNotas +
-        notary.TXSCLAPOW.totalNotas;
+      notary.total = notary.RICK.totalNotas + notary.MORTY.totalNotas;
       notary.name = `${notary.name} (${notary.address})`;
       notary.ricktime = notary.RICK.timeSinceLastNota;
       notary.ricklink = `https://rick.kmd.dev/tx/${notary.RICK.lastNotaTxnId}`;
       notary.mortytime = notary.MORTY.timeSinceLastNota;
       notary.mortylink = `https://morty.kmd.dev/tx/${notary.MORTY.lastNotaTxnId}`;
-      notary.txsclapowtime = notary.TXSCLAPOW.timeSinceLastNota;
-      notary.txsclapowlink = `http://159.69.10.44:54838/tx/${notary.TXSCLAPOW.lastNotaTxnId}`;
       return notary;
     });
     return { notaries };
@@ -68,8 +58,6 @@ export default {
         { text: "RICK.lastnota", value: "ricktime" },
         { text: "MORTY.total", value: "MORTY.totalNotas" },
         { text: "MORTY.lastNota", value: "mortytime" },
-        { text: "TXSCLAPOW.total", value: "TXSCLAPOW.totalNotas" },
-        { text: "TXSCLAPOW.lastNota", value: "txsclapowtime" },
       ],
     };
   },
@@ -85,17 +73,12 @@ export default {
           "https://kmd-data.s3.us-east-2.amazonaws.com/notary-stats-2021/main.json"
         );
         this.notaries = notaries.map((notary) => {
-          notary.total =
-            notary.RICK.totalNotas +
-            notary.MORTY.totalNotas +
-            notary.TXSCLAPOW.totalNotas;
+          notary.total = notary.RICK.totalNotas + notary.MORTY.totalNotas;
           notary.name = `${notary.name} (${notary.address})`;
           notary.ricktime = notary.RICK.timeSinceLastNota;
           notary.ricklink = `https://rick.kmd.dev/tx/${notary.RICK.lastNotaTxnId}`;
           notary.mortytime = notary.MORTY.timeSinceLastNota;
           notary.mortylink = `https://morty.kmd.dev/tx/${notary.MORTY.lastNotaTxnId}`;
-          notary.txsclapowtime = notary.TXSCLAPOW.timeSinceLastNota;
-          notary.txsclapowlink = `http://159.69.10.44:54838/tx/${notary.TXSCLAPOW.lastNotaTxnId}`;
           return notary;
         });
         await this.delay(30000);
