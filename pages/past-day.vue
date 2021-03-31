@@ -17,6 +17,9 @@
       <template v-slot:item.mortytime="{ item }">
         <a target="_blank" :href="item.mortylink">{{ item.mortytime }}</a>
       </template>
+      <template v-slot:item.kmdtime="{ item }">
+        <a target="_blank" :href="item.kmdlink">{{ item.kmdtime }}</a>
+      </template>
     </v-data-table>
   </v-card>
 </template>
@@ -29,12 +32,16 @@ export default {
     );
     notaries = notaries.map((notary) => {
       notary.total =
-        notary.RICK.pastCounts.last24 + notary.MORTY.pastCounts.last24;
+        notary.RICK.pastCounts.last24 +
+        notary.MORTY.pastCounts.last24 +
+        notary.KMD.pastCounts.last24;
       notary.name = `${notary.name} (${notary.address})`;
       notary.ricktime = notary.RICK.timeSinceLastNota;
       notary.ricklink = `https://rick.kmd.dev/tx/${notary.RICK.lastNotaTxnId}`;
       notary.mortytime = notary.MORTY.timeSinceLastNota;
       notary.mortylink = `https://morty.kmd.dev/tx/${notary.MORTY.lastNotaTxnId}`;
+      notary.kmdtime = notary.KMD.timeSinceLastNota;
+      notary.kmdlink = `https://kmdexplorer.io/tx/${notary.KMD.lastNotaTxnId}`;
       return notary;
     });
     return { notaries };
@@ -55,6 +62,8 @@ export default {
         { text: "RICK.lastnota", value: "ricktime" },
         { text: "MORTY.total", value: "MORTY.pastCounts.last24" },
         { text: "MORTY.lastNota", value: "mortytime" },
+        { text: "(KMD->LTC).total", value: "KMD.pastCounts.last24" },
+        { text: "(KMD->LTC).lastNota", value: "kmdtime" },
       ],
     };
   },
@@ -76,12 +85,16 @@ export default {
         );
         this.notaries = notaries.map((notary) => {
           notary.total =
-            notary.RICK.pastCounts.last24 + notary.MORTY.pastCounts.last24;
+            notary.RICK.pastCounts.last24 +
+            notary.MORTY.pastCounts.last24 +
+            notary.KMD.pastCounts.last24;
           notary.name = `${notary.name} (${notary.address})`;
           notary.ricktime = notary.RICK.timeSinceLastNota;
           notary.ricklink = `https://rick.kmd.dev/tx/${notary.RICK.lastNotaTxnId}`;
           notary.mortytime = notary.MORTY.timeSinceLastNota;
           notary.mortylink = `https://morty.kmd.dev/tx/${notary.MORTY.lastNotaTxnId}`;
+          notary.kmdtime = notary.KMD.timeSinceLastNota;
+          notary.kmdlink = `https://kmdexplorer.io/tx/${notary.KMD.lastNotaTxnId}`;
           return notary;
         });
         await this.delay(30000);
