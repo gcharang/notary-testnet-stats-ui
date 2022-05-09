@@ -62,8 +62,8 @@ export default {
         { text: "RICK.lastnota", value: "ricktime" },
         { text: "MORTY.total", value: "MORTY.pastCounts.last72" },
         { text: "MORTY.lastNota", value: "mortytime" },
-        { text: "(KMD->LTC).total", value: "KMD.pastCounts.last72" },
-        { text: "(KMD->LTC).lastNota", value: "kmdtime" },
+        //{ text: "(KMD->LTC).total", value: "KMD.pastCounts.last72" },
+        //{ text: "(KMD->LTC).lastNota", value: "kmdtime" },
       ],
     };
   },
