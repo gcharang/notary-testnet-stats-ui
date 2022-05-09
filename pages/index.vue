@@ -31,7 +31,7 @@ export default {
   },
   async asyncData({ $axios }) {
     let notaries = await $axios.$get(
-      "https://kmd-data.s3.us-east-2.amazonaws.com/notary-stats-2021/main.json"
+      "https://kmd-data.s3.us-east-2.amazonaws.com/notary-stats-2022/main.json"
     );
     notaries = notaries.map((notary) => {
       notary.total =
@@ -40,9 +40,9 @@ export default {
         notary.KMD.totalNotas;
       notary.name = `${notary.name} (${notary.address})`;
       notary.ricktime = notary.RICK.timeSinceLastNota;
-      notary.ricklink = `https://rick.kmd.dev/tx/${notary.RICK.lastNotaTxnId}`;
+      notary.ricklink = `https://rick.explorer.dexstats.info/tx/${notary.RICK.lastNotaTxnId}`;
       notary.mortytime = notary.MORTY.timeSinceLastNota;
-      notary.mortylink = `https://morty.kmd.dev/tx/${notary.MORTY.lastNotaTxnId}`;
+      notary.mortylink = `https://morty.explorer.dexstats.info/tx/${notary.MORTY.lastNotaTxnId}`;
       notary.kmdtime = notary.KMD.timeSinceLastNota;
       notary.kmdlink = `https://kmdexplorer.io/tx/${notary.KMD.lastNotaTxnId}`;
       return notary;
@@ -80,7 +80,7 @@ export default {
       while (true) {
         // console.log("inside poll data");
         const notaries = await this.$axios.$get(
-          "https://kmd-data.s3.us-east-2.amazonaws.com/notary-stats-2021/main.json"
+          "https://kmd-data.s3.us-east-2.amazonaws.com/notary-stats-2022/main.json"
         );
         this.notaries = notaries.map((notary) => {
           notary.total =
@@ -89,9 +89,9 @@ export default {
             notary.KMD.totalNotas;
           notary.name = `${notary.name} (${notary.address})`;
           notary.ricktime = notary.RICK.timeSinceLastNota;
-          notary.ricklink = `https://rick.kmd.dev/tx/${notary.RICK.lastNotaTxnId}`;
+          notary.ricklink = `https://rick.explorer.dexstats.info/tx/${notary.RICK.lastNotaTxnId}`;
           notary.mortytime = notary.MORTY.timeSinceLastNota;
-          notary.mortylink = `https://morty.kmd.dev/tx/${notary.MORTY.lastNotaTxnId}`;
+          notary.mortylink = `https://morty.explorer.dexstats.info/tx/${notary.MORTY.lastNotaTxnId}`;
           notary.kmdtime = notary.KMD.timeSinceLastNota;
           notary.kmdlink = `https://kmdexplorer.io/tx/${notary.KMD.lastNotaTxnId}`;
           return notary;
